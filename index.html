@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildPC | Złóż z nami swój komputer marzeń!</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="buildpc_logo_kwadrat_big.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CZCIONKI -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- IKONY (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="#" onclick="showSection('home')" class="logo-link">
+                <img src="buildpc_logo_białe.png" alt="BuildPC Logo" class="header-logo">
+            </a>
+            <nav class="nav">
+                <a onclick="showSection('home')" id="nav-home" class="active">Start</a>
+                <a onclick="showSection('cennik')" id="nav-cennik">Cennik</a>
+                <a onclick="showSection('wycena')" id="nav-wycena">Wycena</a>
+                <a onclick="showSection('kontakt')" id="nav-kontakt">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        
+        <!-- SEKCJA: HOME -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <h1 class="hero-title">ZŁÓŻ Z NAMI <br><span class="text-blue">SWÓJ KOMPUTER MARZEŃ!</span></h1>
+                <p class="hero-subtitle">Profesjonalne składanie komputerów gamingowych i roboczych. <br>Wydajność, jakość i indywidualne podejście do każdego zestawu.</p>
+                <div class="hero-btns">
+                    <button class="btn-main" onclick="showSection('wycena')">Zacznij projekt</button>
+                    <button class="btn-outline" onclick="showSection('cennik')">Zobacz cennik</button>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>JAK TO <span class="text-blue">DZIAŁA?</span></h2>
+                </div>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="step-num">01</div>
+                        <h3>Formularz</h3>
+                        <p>Wypełnij formularz na stronie wyceny, opisz swoje potrzeby i budżet.</p>
+                    </div>
+                    <div class="process-card highlight">
+                        <div class="step-num">02</div>
+                        <h3>Projekt</h3>
+                        <p>My zajmiemy się doborem podzespołów i złożeniem komputera według Twoich oczekiwań.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="step-num">03</div>
+                        <h3>Realizacja</h3>
+                        <p>Po akceptacji projektu składamy Twój komputer, testujemy go i dostarczamy pod Twoje drzwi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="glass-card about-box">
+                    <h2>O <span class="text-blue">NAS</span></h2>
+                    <div class="underline"></div>
+                    <p>
+                        Jesteśmy ekipą z Białegostoku, która zna się na komputerach jak mało kto. 
+                        Składanie jednostek, wymiana komponentów czy optymalizacja chłodzenia to nasza codzienność. 
+                        Mamy za sobą lata doświadczenia, więc możesz być pewien, że Twój sprzęt trafi w dobre ręce.<br>
+                        Działamy lokalnie w Białymstoku z możliwością dojazdu. Dla klientów z całej Polski oferujemy wysyłkę kurierem. Profesjonalnie, szybko i bez zbędnych komplikacji.
+
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA: CENNIK -->
+        <section id="cennik" class="page-section">
+            <div class="section-header">
+                <h2>CENNIK <span class="text-blue">USŁUG</span></h2>
+            </div>
+            <div class="glass-card">
+                <table class="modern-table">
+                    <tr><td>Złożenie komputera na zamówienie</td><td class="price">200 zł</td></tr>
+                    <tr><td>Instalacja systemu operacyjnego</td><td class="price">50 zł</td></tr>
+                    <tr><td>Wymiana podzespołów (RAM, SSD, GPU, chłodzenie)</td><td class="price">od 50 zł</td></tr>
+                    <tr><td>Instalacja sterowników i oprogramowania<td class="price">W cenie usługi głównej</td></tr>
+                    <tr><td>Dojazd do klienta na terenie Białegostoku</td><td class="price">20 zł</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEKCJA: WYCENA -->
+        <section id="wycena" class="page-section">
+            <div class="section-header">
+                <h2>DARMOWA <span class="text-blue">WYCENA</span></h2>
+            </div>
+            <div class="form-container">
+                <div class="tab-switcher">
+                    <button class="tab-btn active" id="btn-pod" onclick="toggleWycena('pod')">Opcja podstawowa</button>
+                    <button class="tab-btn" id="btn-zaa" onclick="toggleWycena('zaa')">Opcja zaawansowana</button>
+                </div>
+
+                <div class="glass-card">
+                    <form id="wycena-podstawowa">
+                        <div class="input-group">
+                            <label>Imię i nazwisko</label>
+                            <input type="text" name="imie-nazwisko" placeholder="np. Jan Kowalski" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Adres e-mail</label>
+                            <input type="email" name="email" placeholder="Twój adres email" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Budżet na złożenie komputera (zł)</label>
+                            <input type="number" name="kwota" placeholder="np. 5000" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Opis przeznaczenia komputera i preferencje</label>
+                            <textarea name="opis" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-main full-width">Wyślij prośbę o wycenę</button>
+                    </form>
+
+                    <form id="wycena-zaawansowana" style="display:none;">
+                        <div class="form-grid">
+                            <div class="input-group"><label>Imię i nazwisko</label><input type="text" name="imie-nazwisko-zaawansowane" placeholder="np. Jan Kowalski" required></div>
+                            <div class="input-group"><label>Adres e-mail</label><input type="email" name="email-zaawansowane" placeholder="Twój adres email" required></div>
+                            <div class="input-group full-row"><label>Kwota zestawu (opcjonalnie)</label><input type="number" name="kwota-zaawansowane"></div>
+                            <div class="input-group"><label>Procesor</label><input type="text" name="procesor"></div>
+                            <div class="input-group"><label>Karta graficzna</label><input type="text" name="karta-graficzna"></div>
+                            <div class="input-group"><label>Płyta główna</label><input type="text" name="plyta-glowna"></div>
+                            <div class="input-group"><label>Pamięć RAM</label><input type="text" name="ram"></div>
+                            <div class="input-group"><label>Dyski</label><input type="text" name="dyski"></div>
+                            <div class="input-group"><label>Chłodzenie</label><input type="text" name="chlodzenie"></div>
+                            <div class="input-group"><label>Zasilacz</label><input type="text" name="zasilacz"></div>
+                            <div class="input-group"><label>Obudowa</label><input type="text" name="obudowa"></div>
+                        </div>
+                        <button type="submit" class="btn-main full-width" style="margin-top: 20px;">Wyślij specyfikację</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA: KONTAKT -->
+        <section id="kontakt" class="page-section">
+            <div class="section-header">
+                <h2>SKONTAKTUJ <span class="text-blue">SIĘ Z NAMI</span></h2>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Napisz do nas</h4>
+                            <p>kontakt.buildpc@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Lokalizacja</h4>
+                            <p>Białystok, Podlaskie</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                        <div>
+                            <h4>Social Media</h4>
+                            <div class="social-pills">
+                                <a href="https://www.tiktok.com/@buildpc.pl" target="_blank" class="social-item">
+                                    <i class="fa-brands fa-tiktok"></i> TikTok
+                                </a>
+                                <a href="https://www.instagram.com/buildpc.pl" target="_blank" class="social-item">
+                                    <i class="fa-brands fa-instagram"></i> Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card contact-form-main">
+                    <form id="contact-form">
+                        <div class="input-group">
+                            <label>Imię i nazwisko</label>
+                            <input type="text" name="name" placeholder="np. Jan Kowalski" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Adres e-mail</label>
+                            <input type="email" name="email" placeholder="Twój adres email" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Wiadomość</label>
+                            <textarea name="message" placeholder="W czym możemy pomóc?" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-main full-width">Wyślij wiadomość</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="buildpc_logo_białe.png" alt="BuildPC Logo" class="footer-logo">
+                <p>Twój profesjonalny partner w składaniu i modernizacji komputerów. Pasja, wiedza i sprawdzone rozwiązania.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Nawigacja</h4>
+                <a onclick="showSection('home')">Start</a>
+                <a onclick="showSection('cennik')">Cennik</a>
+                <a onclick="showSection('wycena')">Wycena</a>
+                <a onclick="showSection('kontakt')">Kontakt</a>
+            </div>
+            <div class="footer-social">
+                <h4>Znajdź nas</h4>
+                <div class="social-icons-footer">
+                    <a href="https://www.tiktok.com/@buildpc.pl" target="_blank" title="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/buildpc.pl" target="_blank" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> BuildPC. Wszelkie prawa zastrzeżone.</p>
+            <p class="webizone-credit">Created by <a href="https://webizone.pl" target="_blank">Webizone</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Inicjalizacja EmailJS
+        (function() { emailjs.init("umOor72qRHOf8d_7O"); })();
+        
+        // 2. Rok w stopce
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 3. SPA Nawigacja
+        function showSection(id) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            document.getElementById('nav-' + id).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // 4. Przełączanie formularzy wyceny
+        function toggleWycena(mode) {
+            const fPod = document.getElementById('wycena-podstawowa');
+            const fZaa = document.getElementById('wycena-zaawansowana');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if(mode === 'pod') {
+                fPod.style.display = 'block'; fZaa.style.display = 'none';
+                document.getElementById('btn-pod').classList.add('active');
+            } else {
+                fPod.style.display = 'none'; fZaa.style.display = 'block';
+                document.getElementById('btn-zaa').classList.add('active');
+            }
+        }
+
+        // 5. OBSŁUGA WYCENY (template_uq9otwr)
+        const handleQuoteSubmit = (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "WYSYŁANIE...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            let templateParams = {};
+
+            if (form.id === 'wycena-podstawowa') {
+                templateParams = {
+                    from_name: formData.get('imie-nazwisko'),
+                    email: formData.get('email'),
+                    kwota: formData.get('kwota'),
+                    opis: formData.get('opis'),
+                    content: "Typ wyceny: PODSTAWOWA"
+                };
+            } else {
+                const spec = [
+                    `Procesor: ${formData.get('procesor') || '-'}`,
+                    `GPU: ${formData.get('karta-graficzna') || '-'}`,
+                    `MOBO: ${formData.get('plyta-glowna') || '-'}`,
+                    `RAM: ${formData.get('ram') || '-'}`,
+                    `Dysk: ${formData.get('dyski') || '-'}`,
+                    `Chłodzenie: ${formData.get('chlodzenie') || '-'}`,
+                    `PSU: ${formData.get('zasilacz') || '-'}`,
+                    `Case: ${formData.get('obudowa') || '-'}`
+                ].join('\n');
+
+                templateParams = {
+                    from_name: formData.get('imie-nazwisko-zaawansowane'),
+                    email: formData.get('email-zaawansowane'),
+                    kwota: formData.get('kwota-zaawansowane') || "Nie podano",
+                    opis: "Wycena zaawansowana (lista podzespołów w sekcji danych technicznych)",
+                    content: "SPECYFIKACJA:\n" + spec
+                };
+            }
+
+            emailjs.send('service_pk66unl', 'template_uq9otwr', templateParams)
+                .then(() => {
+                    alert('Twoja prośba o wycenę została wysłana!');
+                    form.reset();
+                })
+                .catch((err) => alert('Błąd: ' + JSON.stringify(err)))
+                .finally(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+        };
+
+        // 6. OBSŁUGA KONTAKTU (template_4hdryod) - POPRAWIONA
+        document.getElementById('contact-form').onsubmit = function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "WYSYŁANIE...";
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            const templateParams = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+
+            emailjs.send('service_pk66unl', 'template_4hdryod', templateParams)
+                .then(() => {
+                    alert('Wiadomość została wysłana!');
+                    this.reset();
+                })
+                .catch((err) => alert('Błąd wysyłania: ' + JSON.stringify(err)))
+                .finally(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+        };
+
+        document.getElementById('wycena-podstawowa').onsubmit = handleQuoteSubmit;
+        document.getElementById('wycena-zaawansowana').onsubmit = handleQuoteSubmit;
+    </script>
+</body>
+</html>
